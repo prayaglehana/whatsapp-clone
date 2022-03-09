@@ -1,0 +1,27 @@
+.message {
+  position: relative;
+  font-size: 16px;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 12px;
+  background-color: rgb(235, 235, 235);
+  /* background-color: red; */
+  margin-bottom: 20px;
+}
+
+.message__timeStamp {
+  margin-left: 10px;
+  font-size: xx-small;
+}
+
+.message__name {
+  position: absolute;
+  top: -12px;
+  font-weight: 800;
+  font-size: x-small;
+}
+
+.sender {
+  margin-left: auto;
+  background-color: rgb(212, 255, 212);
+}
