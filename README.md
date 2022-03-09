@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-![alt text](./src/resources/whatsapp-frontend.png)
+![alt text](https://github.com/prayaglehana/whatsapp-clone/blob/master/src/resources/whatsapp-frontend.jpg?raw=true)
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
