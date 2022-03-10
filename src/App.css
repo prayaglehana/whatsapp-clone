@@ -2,12 +2,12 @@
   display: grid;
   place-items: center;
   height: 100vh;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(228, 255, 235);
 }
 
 .app__body {
   display: flex;
-  background-color: rgb(220, 255, 242);
+  background-color: rgb(255, 255, 255);
   /* margin-top: -50px; */
   width: 90vw;
   height: 90vh;

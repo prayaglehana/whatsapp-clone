@@ -1,11 +1,12 @@
 import React from "react";
 import "./Message.css";
-const Message = ({ isSender }) => {
+const Message = ({ msg, isSender }) => {
+  console.log("isse", isSender);
   return (
     <p className={`message${isSender ? " sender" : ""}`}>
-      <span className="message__name">Sonny</span>
-      This is a message
-      <span className="message__timeStamp">{new Date().toUTCString()}</span>
+      <span className="message__name">{msg.sender}</span>
+      {msg.text}
+      <span className="message__timeStamp">3:50 pm</span>
     </p>
   );
 };

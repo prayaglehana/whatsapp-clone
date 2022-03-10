@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const messageSchema = mongoose.Schema({
   sender: String,
-  message: String,
+  text: String,
   timeStamp: String,
 });
 

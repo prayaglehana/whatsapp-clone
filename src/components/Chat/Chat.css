@@ -49,7 +49,7 @@
 .chat__footer > form > input {
   flex: 1;
   border: none;
-  outline-width: none;
+  outline-width: 0;
   /* background-color: red; */
   padding: 10px;
   border-radius: 12px;

@@ -1,5 +1,5 @@
 import { Avatar, IconButton } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import "./Chat.css";
 import Message from "./Message";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -7,7 +7,24 @@ import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import TagFacesOutlinedIcon from "@mui/icons-material/TagFacesOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
-const Chat = () => {
+import axios from "../../axios";
+const Chat = ({ messages }) => {
+  const checkIfSender = (msg, userName) => {
+    return msg.sender == userName;
+  };
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    const txt = document.getElementById("inputTextBox").value;
+    console.log("send message", txt);
+
+    await axios.post("/api/v1/messages/new", {
+      sender: "hekllo",
+      text: txt,
+      timeStamp: "2021-10-19",
+    });
+  };
   return (
     <div className="chat">
       <div className="chat__header">
@@ -30,13 +47,16 @@ const Chat = () => {
       </div>
 
       <div className="chat__body">
-        <Message />
-        <Message isSender={true} />
-        <Message />
-        <Message />
-        <Message isSender={true} />
-        <Message />
-        <Message />
+        {messages.map((msg, idx) => {
+          console.log("msg", msg, "idx", idx);
+          return (
+            <Message
+              key={idx}
+              msg={msg}
+              isSender={checkIfSender(msg, "mayank")}
+            />
+          );
+        })}
       </div>
 
       <div className="chat__footer">
@@ -44,8 +64,10 @@ const Chat = () => {
           <TagFacesOutlinedIcon />
         </IconButton>
         <form>
-          <input placeholder="type a message" type="text" />
-          <button type="submit">Send a message</button>
+          <input id="inputTextBox" placeholder="type a message" type="text" />
+          <button onClick={sendMessage} type="submit">
+            Send a message
+          </button>
         </form>
         <IconButton>
           <MicOutlinedIcon />

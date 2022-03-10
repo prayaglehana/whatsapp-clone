@@ -2,6 +2,7 @@
   position: relative;
   font-size: 16px;
   padding: 10px;
+  padding-bottom: 14px;
   width: fit-content;
   border-radius: 12px;
   background-color: rgb(235, 235, 235);
@@ -10,8 +11,12 @@
 }
 
 .message__timeStamp {
-  margin-left: 10px;
+  position: absolute;
+  margin-top: 18px;
+  margin-left: -39px;
+  width: fit-content;
   font-size: xx-small;
+  color: rgb(145, 145, 145);
 }
 
 .message__name {

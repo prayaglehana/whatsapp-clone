@@ -2,9 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import Messages from "./schema.js";
 import Pusher from "pusher";
-
+import cors from "cors";
 const app = express();
 app.use(express.json());
+app.use(cors());
+
 const port = process.env.PORT || 9000;
 
 const pusher = new Pusher({
@@ -38,7 +40,16 @@ db.once("open", () => {
   const changeStream = msgCollection.watch();
 
   changeStream.on("change", (change) => {
-    console.log("changes", change.fullDocument);
+    console.log("changes", change);
+
+    if (change.operationType === "insert") {
+      const _msg = change.fullDocument;
+      pusher.trigger("messages", "inserted", {
+        sender: _msg.sender,
+        text: _msg.text,
+        timeStamp: _msg.timeStamp,
+      });
+    }
   });
 });
 
