@@ -3,9 +3,12 @@ import mongoose from "mongoose";
 import Messages from "./schema.js";
 import Pusher from "pusher";
 import cors from "cors";
+import apiRouter from "./routes/api.js";
+
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use("/api/v1", apiRouter);
 
 const port = process.env.PORT || 9000;
 
@@ -17,9 +20,9 @@ const pusher = new Pusher({
   useTLS: true,
 });
 
-pusher.trigger("my-channel", "my-event", {
-  message: "hello world",
-});
+// pusher.trigger("my-channel", "my-event", {
+//   message: "hello world",
+// });
 
 const databaseURL =
   "mongodb+srv://mongouser:mongouser@cluster0.24xwe.mongodb.net/whatsapp-mern?retryWrites=true&w=majority";
@@ -62,13 +65,13 @@ app.post("/basic", (req, res) => {
 });
 
 //http://localhost:9000/api/v1/messages/get
-app.get("/api/v1/messages/get", (req, res) => {
-  const query = req.query;
+// app.get("/api/v1/messages/get", (req, res) => {
+//   const query = req.query;
 
-  Messages.find().then((result) => {
-    res.status(200).send(result);
-  });
-});
+//   Messages.find().then((result) => {
+//     res.status(200).send(result);
+//   });
+// });
 
 app.post("/api/v1/messages/new", (req, res) => {
   const _msg = req.body;

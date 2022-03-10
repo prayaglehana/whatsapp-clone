@@ -6,7 +6,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import SidebarChat from "../SidebarChat/SidebarChat";
 import { Avatar, IconButton } from "@mui/material";
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -30,11 +30,14 @@ const Sidebar = () => {
           <input placeholder="Search or start new chat" type="text" />
         </div>
       </div>
-
       <div className="sidebar__chats">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+        {props.rooms.map((roomId, rowIdx) => {
+          return (
+            <button onClick={() => props.roomChange(roomId, rowIdx)}>
+              <SidebarChat Key={rowIdx} roomId={roomId} />
+            </button>
+          );
+        })}
       </div>
     </div>
   );

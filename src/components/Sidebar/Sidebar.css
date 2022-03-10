@@ -48,3 +48,8 @@
   outline-width: 0;
   width: 100%;
 }
+.sidebar__chats > button {
+  /* display: none; */
+  width: 100%;
+  border: none;
+}

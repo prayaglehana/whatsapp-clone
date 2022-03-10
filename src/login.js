@@ -3,13 +3,7 @@ import { GoogleLogin } from "react-google-login";
 const clientId =
   "728833144528-jnqafjlf2ogq6p7r7qn7lmkf22iulvs9.apps.googleusercontent.com";
 
-const onSuccess = (res) => {
-  console.log("LOGIN Success", res.profileObj);
-};
-const onFailure = (res) => {
-  console.log("LOGIN Success", res.profileObj);
-};
-function Login() {
+function Login({ onSuccess, onFailure }) {
   return (
     <div>
       <GoogleLogin

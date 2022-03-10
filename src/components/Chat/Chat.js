@@ -8,7 +8,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import TagFacesOutlinedIcon from "@mui/icons-material/TagFacesOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import axios from "../../axios";
-const Chat = ({ messages }) => {
+const Chat = ({ roomId, user, messages }) => {
   const checkIfSender = (msg, userName) => {
     return msg.sender == userName;
   };
@@ -18,11 +18,15 @@ const Chat = ({ messages }) => {
 
     const txt = document.getElementById("inputTextBox").value;
     console.log("send message", txt);
+    document.getElementById("inputTextBox").value = "";
 
-    await axios.post("/api/v1/messages/new", {
-      sender: "hekllo",
-      text: txt,
-      timeStamp: "2021-10-19",
+    await axios.post("/api/v1/messages/post", {
+      roomId: roomId,
+      message: {
+        sender: user.name,
+        text: txt,
+        timeStamp: "2021-10-19",
+      },
     });
   };
   return (
@@ -53,7 +57,7 @@ const Chat = ({ messages }) => {
             <Message
               key={idx}
               msg={msg}
-              isSender={checkIfSender(msg, "mayank")}
+              isSender={checkIfSender(msg, user.name)}
             />
           );
         })}
