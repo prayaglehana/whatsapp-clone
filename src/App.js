@@ -24,7 +24,7 @@ function App() {
     });
   };
   const onFailure = (res) => {
-    console.log("LOGIN failure", res.profileObj);
+    console.log("LOGIN failure", res);
   };
 
   useEffect(() => {
