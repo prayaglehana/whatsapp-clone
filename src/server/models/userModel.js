@@ -10,9 +10,9 @@ mongoose.connect(dbURL).then((res) => {
 
 const db = mongoose.connection;
 
-export const fetchRoomsForUserName = async (userName) => {
+export const fetchRoomsForUserName = async (email) => {
   return users
-    .findOne({ name: userName }, { _id: 0, rooms: 1 })
+    .findOne({ email: email }, { _id: 0, rooms: 1 })
     .then(({ rooms }) => {
       return rooms;
     });

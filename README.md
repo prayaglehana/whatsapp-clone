@@ -6,23 +6,32 @@ website : https://whatsapp-clone-mern-9b47c.web.app/
 
 In the project directory, you can run:
 
-### `front end look`
+### `Tech`
 
-![alt text](https://github.com/prayaglehana/whatsapp-clone/blob/master/src/resources/whatsapp-frontend.jpg?raw=true)
-Runs the app in the development mode.
+fronend hosted on firebase : https://whatsapp-clone-mern-9b47c.web.app/
+backend deployed on heroku : https://whatsapp-clone-mern-server.herokuapp.com/
+Authentication : google
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+front-end ( react ) ====push-message===> nodejs server ====> mongoDB update
+====> update pusher ( used as a websocket for streaming)====> tells front-end to re-render
 
-### `npm test`
+### `onboard yourself to google authentication`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+add your email id as new test users :
+https://console.cloud.google.com/apis/credentials/consent?project=whatsapp-mern-343719
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+modify login.js & App.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+for google login based on localhost or firebase-web-host
 
-### Code Splitting
+### heroku deploy server to : https://whatsapp-clone-mern-server.herokuapp.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. heroku login
+2. git add .
+3. git commit -am "make it better"
+4. git push heroku master
+
+### firebase deploy web app to : https://whatsapp-clone-mern-9b47c.web.app/
+
+1. npm run build
+2. firebase deploy

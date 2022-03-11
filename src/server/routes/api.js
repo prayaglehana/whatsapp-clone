@@ -8,7 +8,7 @@ router.get("/user/fetchRooms", async (req, res) => {
   const query = req.query;
   console.log("msg", query);
 
-  const rooms = await fetchRoomsForUserName(query.userName);
+  const rooms = await fetchRoomsForUserName(query.email);
   console.log("msgs", rooms);
   res.status(201).send(rooms);
 });

@@ -19,7 +19,6 @@ const Chat = ({ roomId, user, messages }) => {
     const txt = document.getElementById("inputTextBox").value;
     console.log("send message", txt);
     document.getElementById("inputTextBox").value = "";
-    fsdfs;
     await axios.post("/api/v1/messages/post", {
       roomId: roomId,
       message: {
@@ -34,7 +33,7 @@ const Chat = ({ roomId, user, messages }) => {
       <div className="chat__header">
         <Avatar />
         <div className="chat__header__info">
-          <h3>Prayag</h3>
+          <h3>Room Id #{roomId}</h3>
           <p>Last seen at 2:30</p>
         </div>
         <div className="chat__header__right">

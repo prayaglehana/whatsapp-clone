@@ -7,8 +7,13 @@ import axios from "./axios";
 import { gapi } from "gapi-script";
 import LoginButton from "./login";
 import { makeQueryString } from "./utils";
+// for firebase -google login
 const clientId =
-  "728833144528-jnqafjlf2ogq6p7r7qn7lmkf22iulvs9.apps.googleusercontent.com";
+  "728833144528-ldc26eaqmji0rb7k8gkiammpk3bn336a.apps.googleusercontent.com";
+
+// for local host -google login
+// const clientId =
+//   "728833144528-jnqafjlf2ogq6p7r7qn7lmkf22iulvs9.apps.googleusercontent.com";
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -20,6 +25,7 @@ function App() {
     console.log("LOGIN Success", res.profileObj);
     setUser({
       loggedIn: true,
+      email: res.profileObj.email,
       name: res.profileObj.name,
     });
   };
@@ -67,7 +73,7 @@ function App() {
 
   useEffect(() => {
     if (user.loggedIn) {
-      let query = makeQueryString({ userName: user.name });
+      let query = makeQueryString({ email: user.email });
       axios.get("/api/v1/user/fetchRooms" + "?" + query).then((res) => {
         console.log("room:: ", res.data);
         setRooms(res.data);
