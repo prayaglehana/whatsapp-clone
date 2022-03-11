@@ -8,7 +8,7 @@ const CreateBox = ({ createRoom }) => {
     let _members = txt.split(" ");
     console.log(_members);
     let members = _members.filter((m) => m.trim().length > 0);
-    //  document.getElementById("membersInputTextBox").value = "";
+    document.getElementById("membersInputTextBox").value = "";
 
     createRoom(members);
   };
@@ -17,7 +17,7 @@ const CreateBox = ({ createRoom }) => {
       <div className="createBox">
         <h3>Create New Group</h3>
         <div className="createBox__members">
-          <h3>Memebers :</h3>
+          <h3>Members :</h3>
           <input
             id="membersInputTextBox"
             className="input_text_style"

@@ -57,7 +57,6 @@ const Chat = ({ roomId, user, messages }) => {
 
       <div className="chat__body">
         {messages.map((msg, idx) => {
-          console.log("msg", msg, "idx", idx);
           return (
             <Message
               key={idx}
