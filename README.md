@@ -2,7 +2,7 @@
 
 website : https://whatsapp-clone-mern-9b47c.web.app/
 
-## FRONTEND + BACKEND === MERN
+## FRONTEND + BACKEND + PUSHER as websocket === MERN
 
 In the project directory, you can run:
 
