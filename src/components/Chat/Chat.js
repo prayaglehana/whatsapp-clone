@@ -7,6 +7,7 @@ import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import TagFacesOutlinedIcon from "@mui/icons-material/TagFacesOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
+import SendIcon from "@mui/icons-material/Send";
 import axios from "../../axios";
 const Chat = ({ roomId, user, messages }) => {
   const checkIfSender = (msg, userName) => {
@@ -72,8 +73,8 @@ const Chat = ({ roomId, user, messages }) => {
             Send a message
           </button>
         </form>
-        <IconButton>
-          <MicOutlinedIcon />
+        <IconButton onClick={sendMessage}>
+          <SendIcon />
         </IconButton>
       </div>
     </div>
