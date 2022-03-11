@@ -2,6 +2,9 @@
 
 website : https://whatsapp-clone-mern-9b47c.web.app/
 
+![alt text](https://github.com/prayaglehana/whatsapp-clone/blob/master/src/resources/whatsapp-frontend.jpg?raw=true)
+Runs the app in the development mode.
+
 ## FRONTEND + BACKEND + PUSHER as websocket === MERN
 
 In the project directory, you can run:
