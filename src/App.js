@@ -96,7 +96,7 @@ function App() {
       )}
 
       <div className="app__body">
-        <Sidebar rooms={rooms} roomChange={roomChange} />
+        <Sidebar rooms={rooms} user={user} roomChange={roomChange} />
         <Chat roomId={roomId} user={user} messages={messages} />
       </div>
     </div>

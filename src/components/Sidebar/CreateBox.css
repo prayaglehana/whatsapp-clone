@@ -1,0 +1,45 @@
+.createBox {
+  flex: 1;
+  /* background-color: red; */
+  /* justify-content: center; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.createBox > h3 {
+  flex: 0.15;
+  /* border-bottom: 1px solid grey; */
+  /* background: green; */
+}
+
+.createBox > div {
+  flex: 0.85;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.createBox__members > h3 {
+  stroke-width: 20;
+}
+
+.createBox > div > input {
+  /* border: none; */
+  margin-top: 5px;
+  outline-width: 0;
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+  /* flex: 1; */
+}
+
+.createBox > button {
+  padding: 8px;
+  width: 100px;
+  background-color: rgb(206, 255, 196);
+  border-radius: 10px;
+}

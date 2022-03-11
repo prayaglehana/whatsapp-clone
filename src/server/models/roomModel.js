@@ -26,7 +26,7 @@ db.once("open", () => {
   const changeStream = msgCollection.watch();
 
   changeStream.on("change", (change) => {
-    console.log("changes", change);
+    // console.log("changes", change);
 
     if (change.operationType === "update") {
       let obj = change.updateDescription.updatedFields;
@@ -68,4 +68,24 @@ export const getMessagesInRoom = (roomId, top = 10) => {
       }
       return [];
     });
+};
+
+export const createNewRoom = async () => {
+  let newRoomId = await db
+    .collection("rooms")
+    .countDocuments()
+    .then((res) => {
+      return res;
+    });
+  newRoomId = newRoomId + 1;
+
+  await db
+    .collection("rooms")
+    .insertOne({
+      roomId: newRoomId,
+      messages: [],
+    })
+    .then((res) => res);
+
+  return newRoomId;
 };

@@ -6,9 +6,12 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import TagFacesOutlinedIcon from "@mui/icons-material/TagFacesOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "../../axios";
+import { makeQueryString } from "../../utils.js";
+
 const Chat = ({ roomId, user, messages }) => {
   const checkIfSender = (msg, userName) => {
     return msg.sender == userName;
@@ -29,6 +32,14 @@ const Chat = ({ roomId, user, messages }) => {
       },
     });
   };
+
+  const getRoomMembers = async (_roomId) => {
+    let query = makeQueryString({ roomId: _roomId });
+    axios.get("/api/v1/user/getRoomMembers" + "?" + query).then(({ data }) => {
+      console.log("memebers:: ", data);
+      alert(JSON.stringify(data));
+    });
+  };
   return (
     <div className="chat">
       <div className="chat__header">
@@ -38,14 +49,8 @@ const Chat = ({ roomId, user, messages }) => {
           <p>Last seen at 2:30</p>
         </div>
         <div className="chat__header__right">
-          <IconButton>
-            <SearchOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <AttachFileOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertOutlinedIcon />
+          <IconButton onClick={() => getRoomMembers(roomId)}>
+            <InfoOutlinedIcon />
           </IconButton>
         </div>
       </div>

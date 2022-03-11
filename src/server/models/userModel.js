@@ -10,6 +10,20 @@ mongoose.connect(dbURL).then((res) => {
 
 const db = mongoose.connection;
 
+export const assignNewRoomToUser = async (_newRoomId, _email) => {
+  return db
+    .collection("users")
+    .updateOne(
+      { email: _email.trim() },
+      {
+        $push: {
+          rooms: _newRoomId,
+        },
+      }
+    )
+    .then((res) => res);
+};
+
 export const fetchRoomsForUser = async (_email) => {
   return new Promise((resolve, reject) => {
     db.collection("users")
@@ -19,6 +33,24 @@ export const fetchRoomsForUser = async (_email) => {
           resolve([]);
         }
         resolve(result[0].rooms);
+      });
+  });
+};
+
+// db.users
+// .find({ rooms: { $all: [0] } })
+export const getRoomMembers = async (roomId) => {
+  return new Promise((resolve, reject) => {
+    db.collection("users")
+      .find(
+        { rooms: { $all: [Math.floor(roomId)] } },
+        { projection: { _id: 0, name: 1 } }
+      )
+      .toArray(function (err, result) {
+        if (result.length == 0) {
+          resolve([]);
+        }
+        resolve(result);
       });
   });
 };
