@@ -2,20 +2,20 @@ import express from "express";
 const router = express.Router();
 
 import { postMessageInRoom, getMessagesInRoom } from "../models/roomModel.js";
-import { fetchRoomsForUserName } from "../models/userModel.js";
+import { fetchRoomsForUser } from "../models/userModel.js";
 
 router.get("/user/fetchRooms", async (req, res) => {
   const query = req.query;
-  console.log("msg", query);
+  console.log("query", query);
 
-  const rooms = await fetchRoomsForUserName(query.email);
-  console.log("msgs", rooms);
+  const rooms = await fetchRoomsForUser(query.email);
+  console.log("rooms", rooms);
   res.status(201).send(rooms);
 });
 
 router.post("/messages/post", async (req, res) => {
   const reqObj = req.body;
-  console.log("msg", reqObj);
+  console.log("reqObj", reqObj);
 
   await postMessageInRoom(reqObj.roomId, reqObj.message);
   res.status(201).send("message sent");
@@ -23,7 +23,7 @@ router.post("/messages/post", async (req, res) => {
 
 router.get("/messages/get", async (req, res) => {
   const query = req.query;
-  console.log("msg", query);
+  console.log("query", query);
 
   const msgs = await getMessagesInRoom(query.roomId);
   console.log("msgs", msgs);

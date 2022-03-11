@@ -10,10 +10,15 @@ mongoose.connect(dbURL).then((res) => {
 
 const db = mongoose.connection;
 
-export const fetchRoomsForUserName = async (email) => {
-  return users
-    .findOne({ email: email }, { _id: 0, rooms: 1 })
-    .then(({ rooms }) => {
-      return rooms;
-    });
+export const fetchRoomsForUser = async (_email) => {
+  return new Promise((resolve, reject) => {
+    db.collection("users")
+      .find({ email: _email.trim() })
+      .toArray(function (err, result) {
+        if (result.length == 0) {
+          resolve([]);
+        }
+        resolve(result[0].rooms);
+      });
+  });
 };
