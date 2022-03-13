@@ -89,11 +89,26 @@ function App() {
 
   return (
     <div className="app">
-      {user.loggedIn ? (
-        <p>Welcome {user.name} !!</p>
-      ) : (
-        <LoginButton onSuccess={onSuccess} onFailure={onFailure} />
-      )}
+      <div className="header">
+        <a
+          className="github_logo"
+          href="https://github.com/prayaglehana/whatsapp-clone"
+        >
+          <img
+            style={{ width: "30px", height: "30px", paddingRight: "20px" }}
+            src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+            alt="Github"
+          />
+          Github
+        </a>
+        <div>
+          {user.loggedIn ? (
+            <p>Welcome {user.name} !!</p>
+          ) : (
+            <LoginButton onSuccess={onSuccess} onFailure={onFailure} />
+          )}
+        </div>
+      </div>
 
       <div className="app__body">
         <Sidebar rooms={rooms} user={user} roomChange={roomChange} />

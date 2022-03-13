@@ -13,3 +13,22 @@
   height: 90vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.header {
+  display: flex;
+  width: 90%;
+  align-items: center;
+}
+
+.header > div {
+  flex: 1;
+}
+
+.header > a {
+  flex: 1;
+  margin-left: 8px;
+}
+.github_logo {
+  display: flex;
+  align-items: center;
+}
